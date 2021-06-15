@@ -47,17 +47,17 @@ p{
   margin: 0 7.5%;
 }
 
-.pokemon-list li {
-  display:grid;
-  grid-template-rows: 2fr 1fr;
+.pokemon-list div {
+
+  height: 150px;
   border-bottom: none;
   background: linear-gradient(to top right, rgba(255, 203, 5, .1), rgba(0, 58, 112, .2));
   border-radius: 15px;
   transition: all .3s ease-in;
 }
 
-.pokemon-list li:hover,
-.pokemon-list li:active {
+.pokemon-list div:hover,
+.pokemon-list div:active {
   border-radius: 15px;
   background: rgba(255, 255, 255, .2);
 }
@@ -67,7 +67,7 @@ p{
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 0;
+  margin-top: 15px;
   transition: all .3s ease-in;
 }
 
@@ -145,7 +145,7 @@ button {
   display: inline-block;
   position: absolute;
   right: 10%;
-  top: 5%;
+  top: 1%;
 }
 
 /* The switch - the box around the slider */
@@ -245,47 +245,15 @@ input:checked+.slider:before {
 }
 
 .modal {
-  position: relative;
   margin: auto;
   margin-top: 10%;
   display: inline-block;
   box-sizing: border-box;
-  background: #fffbeb;
   padding: 15px;
   width: 100%;
-  max-width: 700px;
   text-align: center;
   border-radius: 15px;
   box-shadow: inset 0px 26px 50px 600px rgba(0, 58, 112, 0.1);
-  animation: modal .4s ease-in;
-}
-
-@keyframes modal {
-  0%{
-    transform: translateX(-1500px);
-  }
-  100%{
-    transform: translateX(0px);
-  }
-}
-
-.modal-close {
-  cursor: pointer;
-  font-size: 26px;
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  -webkit-appearance: none;
-  border: 0;
-  background: none;
-  color: #013a79;
-  text-decoration: none;
-  transition: transform .3s;
-}
-
-.modal-close:hover,
-.modal-close:active {
-  transform: rotate(180deg);
 }
 
 .modal h1 {
@@ -338,17 +306,7 @@ input:checked+.slider:before {
   }
 
   .modal{
-    max-width: 500px;
     margin-top: 25%;
-  }
-
-  @keyframes modal {
-    0%{
-      transform: translateX(-1200px);
-    }
-    100%{
-      transform: translateX(0px);
-    }
   }
 
   .pokemon-title{
@@ -381,17 +339,7 @@ input:checked+.slider:before {
     grid-gap: 50px;
   }
   .modal{
-    max-width: 500px;
     margin-top: 45%;
-  }
-
-  @keyframes modal {
-    0%{
-      transform: translateX(-700px);
-    }
-    100%{
-      transform: translateX(0px);
-    }
   }
 
   .pokemon-title{
@@ -439,7 +387,7 @@ input:checked+.slider:before {
     margin-top: 5px;
   }
 
-  .pokemon-list li:first-child{
+  .pokemon-list div:first-child{
     margin-top: 40px;
   }
 
@@ -484,12 +432,4 @@ input:checked+.slider:before {
     margin-top: 35%;
   }
 
-  @keyframes modal {
-    0%{
-      transform: translateX(-500px);
-    }
-    100%{
-      transform: translateX(0px);
-    }
-  }
 }
