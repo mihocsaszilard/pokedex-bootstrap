@@ -1,0 +1,495 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 22px;
+  color: #ffcb05;
+  line-height: 1.6;
+  background: repeating-linear-gradient(45deg,
+      #013a79,
+      #013a79 300px,
+      #003a70 300px,
+      #003a70 600px);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+p{
+  font-size: 24px;
+}
+
+.main-title {
+  cursor: pointer;
+  margin-left: 10%;
+  color: #FF0000;
+  text-shadow: 1px 3px #990000;
+  border-bottom: 2px solid #990000;
+  margin-right: -8px;
+  transition: color .3s;
+}
+
+.main-title:hover,
+.main-title:active {
+  color: #ff4242;
+}
+
+.pokemon-list {
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 50px 100px;
+  list-style-type: none;
+  text-align: center;
+  padding: 0;
+  margin: 0 7.5%;
+}
+
+.pokemon-list li {
+  display:grid;
+  grid-template-rows: 2fr 1fr;
+  border-bottom: none;
+  background: linear-gradient(to top right, rgba(255, 203, 5, .1), rgba(0, 58, 112, .2));
+  border-radius: 15px;
+  transition: all .3s ease-in;
+}
+
+.pokemon-list li:hover,
+.pokemon-list li:active {
+  border-radius: 15px;
+  background: rgba(255, 255, 255, .2);
+}
+
+.list-img {
+  height: 80px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0;
+  transition: all .3s ease-in;
+}
+
+.list-img:hover,
+.list-img:active {
+  animation: shake 1s infinite;
+}
+
+@keyframes shake {
+  0%{
+    transform: rotate(4deg);
+  }
+  20%{
+    transform: rotate(-5deg);
+  }
+  40%{
+    transform: rotate(15deg) translateX(5px);
+  }
+  60%{
+    transform: rotate(-6deg) translateX(-7px);
+  }
+  80%{
+    transform: rotate(8deg) translateY(-8px);
+  }
+  99.9%{
+    transform: rotate(4deg) translateY(3px);
+  }
+}
+
+.pokemon-button {
+  float:left;
+  clear: left;
+  height: 30px;
+  cursor: pointer;
+  margin-top: 5px;
+  border: none;
+  border-radius: 15px;
+  font-family: inherit;
+  font-size: 24px;
+  background: none;
+}
+
+button {
+  color: inherit;
+  border: none;
+}
+
+#loading {
+  position: fixed;
+  margin-right: 2%;
+  font-size: 12px;
+  top: 0;
+  right: 0;
+  text-align: center;
+}
+
+.dark-mode {
+  background: repeating-linear-gradient(45deg,
+      #c9b630,
+      #c9b630 300px,
+      #B3A125 300px,
+      #B3A125 600px);
+  color: #003a70;
+}
+
+.dark-shadow {
+  box-shadow: 0px 0px 5px rgba(0, 58, 112, .5);
+}
+
+.light-shadow {
+  box-shadow: 0px 0px 5px rgba(201, 182, 48, .3);
+}
+
+.switch-container {
+  display: inline-block;
+  position: absolute;
+  right: 10%;
+  top: 5%;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  left: 37.5%;
+  display: inline-block;
+  float: left;
+  width: 60px;
+  height: 34px;
+  background-color: #B3A125;
+  box-shadow: 0px 0px 5px #003a70;
+  border-radius: 34px;
+}
+
+.mode-text {
+  display: inline-block;
+  margin-top: 0;
+}
+
+.mode-text img {
+  margin-right: 65px;
+  width: 34px;
+}
+
+/* Hide default HTML checkbox */
+
+.switch {
+  cursor: pointer;
+}
+
+.switch input {
+  display: none;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  top: 4px;
+  background-color: #003a70;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+input:checked+.slider {
+  background-color: #2196F3;
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/*---------modal---------*/
+#modal-container {
+  position: fixed;
+  padding: 20px;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  /* to show it above other content */
+  z-index: 999;
+  /* to allow scrolling if the screen is not high enough*/
+  overflow: auto;
+  /* this is used to center the modal */
+  display: none;
+  text-align: center;
+}
+
+#modal-container.is-visible {
+  /* CSS for modal container - add your own desired CSS styles here */
+  display: block;
+}
+
+.modal {
+  position: relative;
+  margin: auto;
+  margin-top: 10%;
+  display: inline-block;
+  box-sizing: border-box;
+  background: #fffbeb;
+  padding: 15px;
+  width: 100%;
+  max-width: 700px;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: inset 0px 26px 50px 600px rgba(0, 58, 112, 0.1);
+  animation: modal .4s ease-in;
+}
+
+@keyframes modal {
+  0%{
+    transform: translateX(-1500px);
+  }
+  100%{
+    transform: translateX(0px);
+  }
+}
+
+.modal-close {
+  cursor: pointer;
+  font-size: 26px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  -webkit-appearance: none;
+  border: 0;
+  background: none;
+  color: #013a79;
+  text-decoration: none;
+  transition: transform .3s;
+}
+
+.modal-close:hover,
+.modal-close:active {
+  transform: rotate(180deg);
+}
+
+.modal h1 {
+  margin-top: 0;
+  text-shadow: 2px 2px 3px #003a70;
+}
+
+.modal p {
+  margin-bottom: 0;
+  color: #003a70;
+}
+
+.element-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pokemon-img {
+  width: 30%;
+  height: auto;
+  margin-bottom: 5%;
+  box-shadow: inset 0px 26px 50px 36px rgba(0, 58, 112, 0.1);
+  border-radius: 25px;
+}
+
+.pokemon-height{
+  margin-bottom: 20px !important;
+}
+
+/*-------modal end-------*/
+@media all and (max-width: 1500px) {
+  .pokemon-list {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 50px 100px;
+  }
+
+  .pokemon-button {
+    font-size: 28px;
+    height: 35px;
+    margin-top: 5px;
+  }
+}
+
+@media all and (min-width: 750px) and (max-width: 1200px) {
+  .pokemon-list {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 50px 75px;
+  }
+
+  .modal{
+    max-width: 500px;
+    margin-top: 25%;
+  }
+
+  @keyframes modal {
+    0%{
+      transform: translateX(-1200px);
+    }
+    100%{
+      transform: translateX(0px);
+    }
+  }
+
+  .pokemon-title{
+    margin: 0;
+  }
+
+  .pokemon-img {
+    width: 30%;
+    margin: 0;
+  }
+
+  .pokemon-type{
+    margin: 0;
+  }
+
+  .pokemon-height{
+    margin: 0;
+  }
+
+  .pokemon-button {
+    font-size: 28px;
+    height: 35px;
+    margin-top: 5px;
+  }
+}
+
+@media all and (max-width: 750px) and (min-width: 500px) {
+  .pokemon-list {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 50px;
+  }
+  .modal{
+    max-width: 500px;
+    margin-top: 45%;
+  }
+
+  @keyframes modal {
+    0%{
+      transform: translateX(-700px);
+    }
+    100%{
+      transform: translateX(0px);
+    }
+  }
+
+  .pokemon-title{
+    margin: 0;
+  }
+
+  .pokemon-img {
+    width: 30%;
+    margin: 0;
+  }
+
+  .pokemon-type{
+    margin: 0;
+  }
+
+  .pokemon-height{
+    margin: 0;
+  }
+
+  .pokemon-button {
+    font-size: 30px;
+    height: 35px;
+    margin-top: 5px;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .main-title {
+    margin: 0;
+    text-align: center;
+  }
+
+  .pokemon-list {
+    grid-template-columns: 1fr;
+    margin-top: 35px;
+  }
+
+  .pokemon-img {
+    width: 75%;
+  }
+
+  .pokemon-button {
+    font-size: 36px;
+    height: 45px;
+    margin-top: 5px;
+  }
+
+  .pokemon-list li:first-child{
+    margin-top: 40px;
+  }
+
+  #loading {
+    margin-right: 0;
+    top: 0;
+    font-size: 10px;
+  }
+
+  .slider{
+    position: relative;
+    z-index: 11;
+  }
+
+  .switch {
+    margin-top: 20px;
+  }
+
+  .switch-container {
+    top: 10%;
+  }
+
+  .mode-text {
+    margin-top: 20px;
+    padding-top: 1px;
+  }
+
+  .mode-text img{
+    position: relative;
+    z-index: 10;
+    margin: 0;
+
+    margin-right: 5px;
+    height: 20px;
+  }
+
+  .mode-text img:last-child {
+    margin-left: -20px;
+  }
+
+  .modal{
+    margin-top: 35%;
+  }
+
+  @keyframes modal {
+    0%{
+      transform: translateX(-500px);
+    }
+    100%{
+      transform: translateX(0px);
+    }
+  }
+}
