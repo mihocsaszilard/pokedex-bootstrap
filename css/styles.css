@@ -31,10 +31,7 @@ body {
 }
 
 .list-img {
-  height: 80px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100px;
   margin-bottom: 10px;
   transition: all .3s ease-in;
 }
