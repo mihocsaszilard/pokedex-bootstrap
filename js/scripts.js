@@ -108,9 +108,9 @@ const pokemonRepository = (function() {
       modalTitle.empty();
       modalBody.empty();
       //create element for name in modal content
-      const nameElement = item.name;
+      const nameElement = '<h1>' + item.name + '</h1>';
       //create img element in modal content
-      const imageElement = $('<img class="modal-img" width="50%">');
+      const imageElement = $('<img class="modal-img img-thumbnail" width="50%">');
       imageElement.attr('src', item.image);
       //create element for height
       if (item.height < 10) {
@@ -118,7 +118,6 @@ const pokemonRepository = (function() {
       } else {
         heightElement = $('<p>' + 'Height: ' + item.height / 10 + 'm' + '</p>');
       }
-
       //create element for types
       const typeElement = $('<p>' + 'Type: ' + item.type + '</p>');
 
