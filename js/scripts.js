@@ -23,7 +23,7 @@ const pokemonRepository = (function() {
   function addListItem(pokemon) {
     const pokemonUl = document.querySelector('.pokemon-list');
     const listItem = document.createElement('div');
-    listItem.classList.add('list-item', 'light-shadow', 'text-sm-center', 'col-12', 'col-sm-4', 'p-sm-3', 'col-md-4', 'p-md-5','text-lg-center', 'col-lg-3', 'p-lg-5', 'col-xl-2', 'p-xl-3');
+    listItem.classList.add('list-item', 'light-shadow', 'text-sm-center', 'col-12', 'col-sm-4', 'p-sm-3', 'col-md-4', 'p-md-5', 'text-lg-center', 'col-lg-3', 'p-lg-5', 'col-xl-2', 'p-xl-3');
     const pokemonImg = document.createElement('img');
     pokemonImg.classList.add('list-img');
     const button = document.createElement('button');
@@ -113,7 +113,12 @@ const pokemonRepository = (function() {
       const imageElement = $('<img class="modal-img" width="50%">');
       imageElement.attr('src', item.image);
       //create element for height
-      const heightElement = $('<p>' + 'Height: ' + item.height + '</p>');
+      if (item.height < 10) {
+        heightElement = $('<p>' + 'Height: ' + item.height * 10 + 'cm' + '</p>');
+      } else {
+        heightElement = $('<p>' + 'Height: ' + item.height / 10 + 'm' + '</p>');
+      }
+
       //create element for types
       const typeElement = $('<p>' + 'Type: ' + item.type + '</p>');
 
