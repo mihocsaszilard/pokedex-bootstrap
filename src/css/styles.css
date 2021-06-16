@@ -14,7 +14,8 @@ body {
 }
 
 .navbar-custom {
-  background-color: #12007a !important;
+  background-color: #003a70 !important;
+  box-shadow: 0px 1px 3px black;
 }
 
 .pokemon-list div {
