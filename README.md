@@ -2,14 +2,6 @@
 
 The application will display a list of data items,  load items from an external API, allowing the user to search for items and to get a detailed view of each individual item on the list.
 
-## Built with
-
-* JavaScript
-* jQuery
-* HTML
-* CSS
-* Bootstrap
-
 ## Features and Requirements
 
 The app loads data from an external API (https://pokeapi.co/api/v2/pokemon), users should be able to view a list of data and see more details by clicking on a given item.
@@ -38,9 +30,17 @@ Web Hosting).
 * The app should handle errors (such as trying to load data while offline) and show user-friendly
 error messages.
 
+## Built with
+
+* JavaScript
+* jQuery
+* HTML
+* CSS
+* Bootstrap
+
 ## Deployment
 
-The [Pokédex](https://github.com/mihocsaszilard/pokedex-bootstrap) app is deployed on GitHub Pages.
+The [Pokédex](https://mihocsaszilard.github.io/pokedex-bootstrap/) app is live on GitHub Pages.
 
 ## Contact
 
