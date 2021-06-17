@@ -20,7 +20,7 @@ demand, such as when clicking on a list item.
 touch interactions.
 * The app may allow searching for items (e.g., searching for Pokémon).
 * The app must not throw any errors when being used.
-* The app should be deployed to a publicly accessible platform like GitHub Pages..
+* The app should be deployed to a publicly accessible platform like GitHub Pages.
 * The app must work in Chrome, Firefox, Safari, Edge, and Internet Explorer 11.
 
 #### Nice to have:
@@ -42,5 +42,5 @@ The [Pokédex](https://mihocsaszilard.github.io/pokedex-bootstrap/) app is live 
 
 ## Contact
 
-📧 mihocsa48@gmail.com <br>
+📧 mihocsa48@gmail.com <br />
 👋 www.linkedin.com/in/mihocsaszilard/
