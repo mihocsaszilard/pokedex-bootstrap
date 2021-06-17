@@ -33,7 +33,12 @@ review how to do this in Intro to Frontend Development's Exercise 10: Code Quali
 Web Hosting).
 * The app must work in Chrome, Firefox, Safari, Edge, and Internet Explorer 11.
 
-### Nice to have:
+#### Nice to have:
 * The app should show loading indicators while loading data.
 * The app should handle errors (such as trying to load data while offline) and show user-friendly
 error messages.
+
+## Contact
+
+📧 mihocsa48@gmail.com
+👋 linkedin.com/mihocsaszilard
