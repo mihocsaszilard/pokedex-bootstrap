@@ -41,4 +41,4 @@ error messages.
 ## Contact
 
 📧 mihocsa48@gmail.com
-👋 linkedin.com/mihocsaszilard
+👋 www.linkedin.com/in/mihocsaszilard/
