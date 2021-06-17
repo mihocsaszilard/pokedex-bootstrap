@@ -12,7 +12,7 @@ The application will display a list of data items,  load items from an external 
 
 ## Features and Requirements
 
-Users should be able to view a list of data and see more details for a given data item on demand.
+The app loads data from an external API (https://pokeapi.co/api/v2/pokemon), users should be able to view a list of data and see more details by clicking on a given item.
 
 ## Technical Requirements
 
@@ -37,6 +37,10 @@ Web Hosting).
 * The app should show loading indicators while loading data.
 * The app should handle errors (such as trying to load data while offline) and show user-friendly
 error messages.
+
+## Deployment
+
+The [Pokédex] (https://github.com/mihocsaszilard/pokedex-bootstrap) app is deployed on GitHub Pages.
 
 ## Contact
 
