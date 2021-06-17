@@ -130,7 +130,7 @@ const pokemonRepository = (function() {
     });
   }
 
-
+//Search
   $(document).ready(function() {
     $("#nameInput").on("keyup", function() {
       var value = $(this).val().toLowerCase();

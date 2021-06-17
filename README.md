@@ -2,17 +2,9 @@
 
 The application will display a list of data items,  load items from an external API, allowing the user to search for items and to get a detailed view of each individual item on the list.
 
-## Built with
-
-* JavaScript
-* jQuery
-* HTML
-* CSS
-* Bootstrap
-
 ## Features and Requirements
 
-Users should be able to view a list of data and see more details for a given data item on demand.
+The app loads data from an external API (https://pokeapi.co/api/v2/pokemon), users should be able to view a list of data and see more details by clicking on a given item.
 
 ## Technical Requirements
 
@@ -28,12 +20,27 @@ demand, such as when clicking on a list item.
 touch interactions.
 * The app may allow searching for items (e.g., searching for Pokémon).
 * The app must not throw any errors when being used.
-* The app should be deployed to a publicly accessible platform like GitHub Pages (you can
-review how to do this in Intro to Frontend Development's Exercise 10: Code Quality, Testing, &
-Web Hosting).
+* The app should be deployed to a publicly accessible platform like GitHub Pages..
 * The app must work in Chrome, Firefox, Safari, Edge, and Internet Explorer 11.
 
-### Nice to have:
+#### Nice to have:
 * The app should show loading indicators while loading data.
 * The app should handle errors (such as trying to load data while offline) and show user-friendly
 error messages.
+
+## Built with
+
+* JavaScript
+* jQuery
+* HTML
+* CSS
+* Bootstrap
+
+## Deployment
+
+The [Pokédex](https://mihocsaszilard.github.io/pokedex-bootstrap/) app is live on GitHub Pages.
+
+## Contact
+
+📧 mihocsa48@gmail.com <br>
+👋 www.linkedin.com/in/mihocsaszilard/
