@@ -40,9 +40,9 @@ error messages.
 
 ## Deployment
 
-The [Pokédex] (https://github.com/mihocsaszilard/pokedex-bootstrap) app is deployed on GitHub Pages.
+The [Pokédex](https://github.com/mihocsaszilard/pokedex-bootstrap) app is deployed on GitHub Pages.
 
 ## Contact
 
-📧 mihocsa48@gmail.com
+📧 mihocsa48@gmail.com <br>
 👋 www.linkedin.com/in/mihocsaszilard/
