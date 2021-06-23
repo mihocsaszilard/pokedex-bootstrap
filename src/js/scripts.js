@@ -2,7 +2,6 @@
 const pokemonRepository = (function() {
   const pokemonList = [];
   const apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=100';
-  const modalContainer = document.querySelector('#modal-container'); //global scope
 
   //adding pokemon if it is an object and is not null
   function add(pokemon) {
@@ -57,7 +56,7 @@ const pokemonRepository = (function() {
     }).catch(function(e) {
       hideLoadingMessage();
       console.error(e);
-    })
+    });
   }
 
   function loadDetails(item) {
@@ -122,6 +121,7 @@ const pokemonRepository = (function() {
       //create element for types
       const typeElement = $('<p>' + 'Type: ' + item.type + '</p>');
 
+      modalHeader.append(modalTitle);
       modalTitle.append(nameElement);
       modalBody.append(imageElement);
       modalBody.append(heightElement);
@@ -136,7 +136,7 @@ const pokemonRepository = (function() {
     $('#nameInput').on('keyup', function() {
       var value = $(this).val().toLowerCase();
       $('#pokemon-list div').filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
       });
     });
   });
