@@ -4,37 +4,37 @@ body {
       #013a79 300px,
       #003a70 300px,
       #003a70 600px);
-  background-size: cover;
-  background-repeat: no-repeat;
   background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .list-item {
-  background: rgba(255, 255, 255, .05)
+  background: rgb(255, 255, 255, .05)
 }
 
 .navbar-custom {
   background-color: #003a70 !important;
-  box-shadow: 0px 1px 3px black;
+  box-shadow: 0 1px 3px black;
 }
 
 .pokemon-list div {
-  cursor: pointer;
-  border-bottom: none;
   background: linear-gradient(to top right, rgba(255, 203, 5, .1), rgba(0, 58, 112, .2));
+  border-bottom: none;
+  cursor: pointer;
   transition: all .3s ease-in;
 }
 
 .pokemon-list div:hover,
 .pokemon-list div:active {
-  border-radius: 15px;
   background: rgba(255, 255, 255, .2);
+  border-radius: 15px;
 }
 
 .list-img {
-  width: 100px;
   margin-bottom: 10px;
   transition: all .3s ease-in;
+  width: 100px;
 }
 
 .list-img:hover,

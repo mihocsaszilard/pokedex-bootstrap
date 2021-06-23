@@ -12,7 +12,7 @@ const pokemonRepository = (function() {
     ) {
       pokemonList.push(pokemon);
     } else {
-      console.log('The Pokemon is not correct' + '<br>')
+      console.log('The Pokemon is not correct' + '<br>');
     }
   }
 
@@ -34,7 +34,7 @@ const pokemonRepository = (function() {
     listItem.appendChild(button);
     pokemonUl.appendChild(listItem);
 
-    listItem.addEventListener('click', function(event) {
+    listItem.addEventListener('click', function() {
       showDetails(pokemon);
     });
   }
@@ -113,6 +113,7 @@ const pokemonRepository = (function() {
       const imageElement = $('<img class="modal-img img-thumbnail" width="50%">');
       imageElement.attr('src', item.image);
       //create element for height
+      let heightElement;
       if (item.height < 10) {
         heightElement = $('<p>' + 'Height: ' + item.height * 10 + 'cm' + '</p>');
       } else {
@@ -130,11 +131,11 @@ const pokemonRepository = (function() {
     });
   }
 
-//Search
+  //Search
   $(document).ready(function() {
-    $("#nameInput").on("keyup", function() {
+    $('#nameInput').on('keyup', function() {
       var value = $(this).val().toLowerCase();
-      $("#pokemon-list div").filter(function() {
+      $('#pokemon-list div').filter(function() {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
       });
     });
@@ -157,24 +158,3 @@ pokemonRepository.loadList().then(function() {
     pokemonRepository.addListItem(pokemon);
   });
 });
-
-function darkMode() {
-  const checkBox = document.getElementById('check');
-  const body = document.body;
-
-  if (checkBox.checked == true) {
-    body.classList.add('dark-mode');
-  } else {
-    body.classList.remove('dark-mode');
-  }
-
-  const darkLi = document.getElementById('pokemon-list').getElementsByTagName('li');
-  for (let i = 0; i < darkLi.length; i++) {
-    if (checkBox.checked == true) {
-      darkLi[i].classList.add('dark-shadow');
-      darkLi[i].classList.remove('light-shadow');
-    } else {
-      darkLi[i].classList.add('light-shadow');
-    }
-  }
-}
