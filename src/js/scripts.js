@@ -1,7 +1,13 @@
+let itemPerPage = '24';
+let totalItems = 1118;
+let totalPages = totalItems / parseInt(itemPerPage);
+let roundedTotalPages = Math.ceil(totalPages);
+
 //wrapping pokemonList array in an IIFE
 const pokemonRepository = (function() {
   const pokemonList = [];
-  const apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=100';
+  const apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=';
+
 
   //adding pokemon if it is an object and is not null
   function add(pokemon) {
@@ -11,7 +17,7 @@ const pokemonRepository = (function() {
     ) {
       pokemonList.push(pokemon);
     } else {
-      console.log('The Pokemon is not correct' + '<br>');
+      console.log(`The Pokemon is not correct!<br>`);
     }
   }
 
@@ -41,7 +47,7 @@ const pokemonRepository = (function() {
   async function loadList() {
     showLoadingMessage();
     try {
-          const response = await fetch(apiUrl);
+          const response = await fetch(apiUrl + itemPerPage);
           const json = await response.json();
           hideLoadingMessage();
           json.results.forEach(function(item) {
@@ -112,20 +118,20 @@ const pokemonRepository = (function() {
       modalTitle.empty();
       modalBody.empty();
       //create element for name in modal content
-      const nameElement = '<h1>' + item.name + '</h1>';
+      const nameElement = `<h1>  ${item.name}  </h1>`;
       //create img element in modal content
       const imageElement = $('<img class="modal-img img-thumbnail" width="50%">');
       imageElement.attr('src', item.image);
       //create element for height
       let heightElement;
       if (item.height < 10) {
-        heightElement = $('<p>' + 'Height: ' + item.height * 10 + 'cm' + '</p>');
+        heightElement = $(`<p> Height: ${item.height  * 10} cm </p>`);
       } else {
-        heightElement = $('<p>' + 'Height: ' + item.height / 10 + 'm' + '</p>');
+        heightElement = $(`<p> Height: ${item.height  / 10} m </p>`);
       }
       //create element for types
-      const typeElement = $('<p>' + 'Type: ' + item.type + '</p>');
-      const xpElement = $('<p>' + 'XP: ' + item.baseXp + '</p>');
+      const typeElement = $(`<p> Type: ${item.type} </p>`);
+      const xpElement = $(`<p> XP: ${item.baseXp} </p>`);
 
       modalHeader.append(modalTitle);
       modalTitle.append(nameElement);
