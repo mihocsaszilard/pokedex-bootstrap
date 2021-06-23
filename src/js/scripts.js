@@ -38,69 +38,52 @@ const pokemonRepository = (function() {
     });
   }
 
-  function loadList() {
+  async function loadList() {
     showLoadingMessage();
-    return fetch(apiUrl).then(function(response) {
-      return response.json();
-    }).then(function(json) {
-      hideLoadingMessage();
-      json.results.forEach(function(item) {
-        const itemNameCapitalized = item.name.charAt(0).toUpperCase() + item.name.slice(1);
-        let pokemon = {
-          name: itemNameCapitalized,
-          detailsUrl: item.url
-        };
-        add(pokemon);
-        //console.log(pokemon);
-      });
-    }).catch(function(e) {
-      hideLoadingMessage();
-      console.error(e);
-    });
+    try {
+          const response = await fetch(apiUrl);
+          const json = await response.json();
+          hideLoadingMessage();
+          json.results.forEach(function(item) {
+              const itemNameCapitalized = item.name.charAt(0).toUpperCase() + item.name.slice(1);
+              let pokemon = {
+                  name: itemNameCapitalized,
+                  detailsUrl: item.url
+              };
+              add(pokemon);
+              //console.log(pokemon);
+          });
+      }
+      catch (e) {
+          hideLoadingMessage();
+          console.error(e);
+      }
   }
 
-  // function loadList() {
-  //   showLoadingMessage();
-  //   return fetch(apiUrl).then(function(response) {
-  //     return response.json();
-  //   }).then(function(json) {
-  //     hideLoadingMessage();
-  //     json.results.forEach(function(item) {
-  //       const itemNameCapitalized = item.name.charAt(0).toUpperCase() + item.name.slice(1);
-  //       let pokemon = {
-  //         name: itemNameCapitalized,
-  //         detailsUrl: item.url
-  //       };
-  //       add(pokemon);
-  //       //console.log(pokemon);
-  //     });
-  //   }).catch(function(e) {
-  //     hideLoadingMessage();
-  //     console.error(e);
-  //   });
-  // }
-
-  function loadDetails(item) {
+  async function loadDetails(item) {
     showLoadingMessage();
     const url = item.detailsUrl;
-    return fetch(url).then(function(response) {
-      return response.json();
-    }).then(function(details) {
+    try {
+      const response = await fetch(url);
+      const details = await response.json();
       hideLoadingMessage();
-      //now we add the details to the pokemon
-      item.image = details.sprites.front_default;
-      item.height = details.height;
-      //extracting the types & creating an array to hold them
-      let pokemonTypes = details.types.map(extract);
 
-      function extract(subItem) {
-        return subItem.type.name;
+      //now we add the details to the pokemon
+        item.image = details.sprites.front_default;
+        item.height = details.height;
+
+        //extracting the types & creating an array to hold them
+        let pokemonTypes = details.types.map(extract);
+        function extract(subItem_1) {
+          return subItem_1.type.name;
+        }
+        item.type = pokemonTypes;
       }
-      item.type = pokemonTypes;
-    }).catch(function(e) {
+
+    catch (e) {
       hideLoadingMessage();
       console.error(e);
-    });
+    }
   }
 
   function showDetails(item) {
@@ -124,6 +107,7 @@ const pokemonRepository = (function() {
       modalBody.addClass('text-center');
       const modalTitle = $('.modal-title');
       const modalHeader = $('.modal-header');
+      modalHeader.addClass('d-block');
       //clear all the existing content
       modalTitle.empty();
       modalBody.empty();
