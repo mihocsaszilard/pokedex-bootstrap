@@ -59,6 +59,27 @@ const pokemonRepository = (function() {
     });
   }
 
+  // function loadList() {
+  //   showLoadingMessage();
+  //   return fetch(apiUrl).then(function(response) {
+  //     return response.json();
+  //   }).then(function(json) {
+  //     hideLoadingMessage();
+  //     json.results.forEach(function(item) {
+  //       const itemNameCapitalized = item.name.charAt(0).toUpperCase() + item.name.slice(1);
+  //       let pokemon = {
+  //         name: itemNameCapitalized,
+  //         detailsUrl: item.url
+  //       };
+  //       add(pokemon);
+  //       //console.log(pokemon);
+  //     });
+  //   }).catch(function(e) {
+  //     hideLoadingMessage();
+  //     console.error(e);
+  //   });
+  // }
+
   function loadDetails(item) {
     showLoadingMessage();
     const url = item.detailsUrl;

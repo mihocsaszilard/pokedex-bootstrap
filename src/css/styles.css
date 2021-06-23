@@ -14,7 +14,7 @@ body {
 }
 
 .navbar-custom {
-  background-color: #003a70;
+  background-color: #003a70 !important;
   box-shadow: 0 1px 3px black;
 }
 
