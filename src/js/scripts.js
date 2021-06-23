@@ -71,13 +71,13 @@ const pokemonRepository = (function() {
       //now we add the details to the pokemon
         item.image = details.sprites.front_default;
         item.height = details.height;
-
         //extracting the types & creating an array to hold them
         let pokemonTypes = details.types.map(extract);
         function extract(subItem_1) {
           return subItem_1.type.name;
         }
         item.type = pokemonTypes;
+        item.baseXp = details.base_experience;
       }
 
     catch (e) {
@@ -125,12 +125,14 @@ const pokemonRepository = (function() {
       }
       //create element for types
       const typeElement = $('<p>' + 'Type: ' + item.type + '</p>');
+      const xpElement = $('<p>' + 'XP: ' + item.baseXp + '</p>');
 
       modalHeader.append(modalTitle);
       modalTitle.append(nameElement);
       modalBody.append(imageElement);
       modalBody.append(heightElement);
       modalBody.append(typeElement);
+      modalBody.append(xpElement);
 
       $('#exampleModal').modal('toggle');
     });
