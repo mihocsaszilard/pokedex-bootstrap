@@ -1,8 +1,8 @@
 setTimeout(function() {
     loadingScreen = document.querySelector('#loading-screen');
     page = document.querySelector('#page');
-    // loadingScreen.classList.add('hidden');
-    // page.classList.remove('hidden');
+    loadingScreen.classList.add('hidden');
+    page.classList.remove('hidden');
 }, 3000);
 
 let itemPerPage = '24';
@@ -34,12 +34,12 @@ const pokemonRepository = (function() {
   function addListItem(pokemon) {
     const pokemonUl = document.querySelector('.pokemon-list');
     const listItem = document.createElement('div');
-    listItem.classList.add('list-item','back', 'rounded', 'light-shadow', 'd-block', 'text-sm-center', 'm-4', 'col-sm-3', 'col-xs-12');
+    listItem.classList.add('list-item','back', 'rounded', 'light-shadow', 'd-block', 'text-center', 'm-4', 'col-sm-3', 'col-xs-12');
     // listItem.setAttribute('id', 'box');
     const pokemonImg = document.createElement('img');
     pokemonImg.classList.add('list-img', 'd-flex', 'pt-5', 'm-auto');
     const button = document.createElement('button');
-    button.classList.add('pokemon-button', 'btn', 'btn-outline-light', 'mt-5');
+    button.classList.add('pokemon-button', 'btn', 'btn-outline-light', 'm-auto', 'd-flex');
     pokemonImg.src = 'img/pokeball.svg';
     button.innerText = pokemon.name;
 
