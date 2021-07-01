@@ -3,7 +3,7 @@ setTimeout(function() {
     page = document.querySelector('#page');
     loadingScreen.classList.add('hidden');
     page.classList.remove('hidden');
-}, 3000);
+}, 2000);
 
 let itemPerPage = '24';
 let totalItems = 1118;
@@ -177,6 +177,7 @@ const pokemonRepository = (function() {
       //create element for types
       const typeElement = $(`<p> Type: ${item.type} </p>`);
 
+      //highlighting the type field with the corresponding color
       if (item.type.includes('fire')) {
         typeElement.addClass('fire-bg');
       } else if (item.type.includes('grass')) {
@@ -216,7 +217,7 @@ const pokemonRepository = (function() {
     });
   }
 
-  //Search
+  //Search  ---doesnt works
   $(document).ready(function() {
     $('#nameInput').on('keyup', function() {
       var value = $(this).val().toLowerCase();
