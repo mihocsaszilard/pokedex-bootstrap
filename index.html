@@ -13,49 +13,90 @@
 </head>
 
 <body>
-  <!-- Navbar -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark navbar-custom">
-    <a class="navbar-brand ml-5 pl-5" href="index.html">Pokédex</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ">
-        <li class="nav-item ">
-          <input class="form-control" type="text" id="nameInput" placeholder="Search for Pokémon...">
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <!-- loading -->
 
-  <div id="loading">
-    <h1>Loading...</h1>
-  </div>
-
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel"></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+  <div id="loading-screen">
+    <div class="face">
+      <!-- <div class="eyebrows">
+        <div class="eyebrows eyebrow-one"></div>
+        <div class="eyebrows eyebrow-two"></div> -->
+      <!-- </div> -->
+      <div class="eyes">
+        <div class="left">
+          <div class="eyeshine eyeshine-left"></div>
         </div>
-        <div class="modal-body">
-
+        <div class="right">
+          <div class="eyeshine eyeshine-right"></div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
+      </div>
+      <div class="nose">
+        <div class="nose-two"></div>
+        <div class="nose-three"></div>
+        <div class="noseshine"></div>
+      </div>
+      <div class="mouth mouth-main">
+        <div class="mouth mouth-one"></div>
+        <div class="mouth mouth-two"></div>
+        <!-- <div class="mouth mouth-three"></div> -->
+        <div class="mouth mouth-four"></div>
+        <div class="mouth mouth-five"></div>
+        <div class="mouth mouth-six"></div>
+        <div class="mouth mouth-seven"></div>
+        <div class="mouth mouth-eight"></div>
+      </div>
+      <div class="red-dot">
+        <div class="red-dot dot-one"></div>
+        <div class="red-dot dot-two"></div>
       </div>
     </div>
   </div>
 
-  <div class="container" id="modal-container">
-    <div class="pokemon-list d-flex flex-wrap" id="pokemon-list"></div>
-  </div>
+  <div id="page" class="hidden">
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark navbar-custom" id="navbar">
+      <a class="navbar-brand ml-5 pl-5" href="index.html">Pokédex</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ">
+          <li class="nav-item ">
+            <input class="form-control" type="text" id="nameInput" placeholder="Search for Pokémon...">
+          </li>
+        </ul>
+      </div>
+    </nav>
 
+    <div id="loading">
+      <h1>Loading...</h1>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container " id="modal-container">
+      <div class="pokemon-list d-flex flex-wrap row justify-content-around" id="pokemon-list"></div>
+      <div class="front rounded light-shadow d-block text-sm-center m-4 col-sm-3 col-xs-12" id="box1">This is a div to rotate.
+      </div>
+    </div>
+  </div>
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

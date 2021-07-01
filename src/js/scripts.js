@@ -1,3 +1,10 @@
+setTimeout(function() {
+    loadingScreen = document.querySelector('#loading-screen');
+    page = document.querySelector('#page');
+    loadingScreen.classList.add('hidden');
+    page.classList.remove('hidden');
+}, 3000);
+
 let itemPerPage = '24';
 let totalItems = 1118;
 let totalPages = totalItems / parseInt(itemPerPage);
@@ -7,7 +14,6 @@ let roundedTotalPages = Math.ceil(totalPages);
 const pokemonRepository = (function() {
   const pokemonList = [];
   const apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=';
-
 
   //adding pokemon if it is an object and is not null
   function add(pokemon) {
@@ -28,16 +34,46 @@ const pokemonRepository = (function() {
   function addListItem(pokemon) {
     const pokemonUl = document.querySelector('.pokemon-list');
     const listItem = document.createElement('div');
-    listItem.classList.add('list-item', 'light-shadow', 'text-sm-center', 'col-12', 'col-sm-4', 'p-sm-3', 'col-md-4', 'p-md-5', 'text-lg-center', 'col-lg-3', 'p-lg-5', 'col-xl-2', 'p-xl-3');
+    listItem.classList.add('list-item','back', 'rounded', 'light-shadow', 'd-block', 'text-sm-center', 'm-4', 'col-sm-3', 'col-xs-12');
+    // listItem.setAttribute('id', 'box');
     const pokemonImg = document.createElement('img');
-    pokemonImg.classList.add('list-img');
+    pokemonImg.classList.add('list-img', 'd-flex', 'pt-5', 'm-auto');
     const button = document.createElement('button');
+    button.classList.add('pokemon-button', 'btn', 'btn-outline-light', 'mt-5');
     pokemonImg.src = 'img/pokeball.svg';
     button.innerText = pokemon.name;
-    button.classList.add('pokemon-button', 'btn', 'btn-outline-light');
+
+    listItem.addEventListener('mousemove', colorChange);
+    listItem.addEventListener('mouseout', noColor);
+    listItem.addEventListener('mouseenter', addText);
+    listItem.addEventListener('mouseleave', removeText);
+
+    const text = document.createElement('p');
+    text.classList.add('text-light', 'mt-3');
+
+    text.innerHTML = 'Click to meet ' + pokemon.name + '!';
+
+    function colorChange(e) {
+      listItem.style.backgroundColor = 'rgba(' + e.offsetX / 2 + ',' + e.offsetY / 2 + ',' + e.offsetX / 3 + ', .2)';
+    }
+
+    function noColor() {
+      listItem.style.backgroundColor = 'rgba(0,0,0,.1)';
+    }
+
+    function addText() {
+      listItem.appendChild(text);
+    }
+
+    function removeText() {
+      listItem.removeChild(text);
+    }
+
     listItem.appendChild(pokemonImg);
     listItem.appendChild(button);
     pokemonUl.appendChild(listItem);
+    //console.log(listItem);
+    //listItem.style.backgroundColor = '#fff';
 
     listItem.addEventListener('click', function() {
       showDetails(pokemon);
@@ -47,23 +83,23 @@ const pokemonRepository = (function() {
   async function loadList() {
     showLoadingMessage();
     try {
-          const response = await fetch(apiUrl + itemPerPage);
-          const json = await response.json();
-          hideLoadingMessage();
-          json.results.forEach(function(item) {
-              const itemNameCapitalized = item.name.charAt(0).toUpperCase() + item.name.slice(1);
-              let pokemon = {
-                  name: itemNameCapitalized,
-                  detailsUrl: item.url
-              };
-              add(pokemon);
-              //console.log(pokemon);
-          });
-      }
-      catch (e) {
-          hideLoadingMessage();
-          console.error(e);
-      }
+      const response = await fetch(apiUrl + itemPerPage);
+      const json = await response.json();
+      hideLoadingMessage();
+      json.results.forEach(function(item) {
+        const itemNameCapitalized = item.name.charAt(0).toUpperCase() + item.name.slice(1);
+        let pokemon = {
+          name: itemNameCapitalized,
+          detailsUrl: item.url
+        };
+        add(pokemon);
+        //console.log(pokemon);
+      });
+    } catch (e) {
+      hideLoadingMessage();
+      console.error(e);
+    }
+
   }
 
   async function loadDetails(item) {
@@ -73,24 +109,33 @@ const pokemonRepository = (function() {
       const response = await fetch(url);
       const details = await response.json();
       hideLoadingMessage();
-
       //now we add the details to the pokemon
-        item.image = details.sprites.front_default;
-        item.height = details.height;
-        //extracting the types & creating an array to hold them
-        let pokemonTypes = details.types.map(extract);
-        function extract(subItem_1) {
-          return subItem_1.type.name;
-        }
-        item.type = pokemonTypes;
-        item.baseXp = details.base_experience;
-      }
+      item.image = details.sprites.front_default;
+      item.height = details.height;
+      //extracting the types & creating an array to hold them
+      let pokemonTypes = details.types.map(extract);
 
-    catch (e) {
+      function extract(subItem_1) {
+        return subItem_1.type.name;
+      }
+      item.baseXp = details.base_experience;
+      item.type = pokemonTypes;
+    } catch (e) {
       hideLoadingMessage();
       console.error(e);
     }
   }
+
+  // function bgColor(item) {
+  //   const pokemonUl = document.querySelector('.pokemon-list');
+  //   const listItem = pokemonUl.querySelector('div');
+  //   if(item.type.includes('grass')){
+  //     console.log(item.type);
+  //
+  //     listItem.classList.add('grass-bg')
+  //
+  //   }
+  // }
 
   function showDetails(item) {
     loadDetails(item).then(function() {
@@ -131,6 +176,33 @@ const pokemonRepository = (function() {
       }
       //create element for types
       const typeElement = $(`<p> Type: ${item.type} </p>`);
+
+      if (item.type.includes('fire')) {
+        typeElement.addClass('fire-bg');
+      } else if (item.type.includes('grass')) {
+        typeElement.addClass('grass-bg');
+      } else if (item.type.includes('water')) {
+        typeElement.addClass('water-bg');
+      } else if (item.type.includes('poison')) {
+        typeElement.addClass('poison-bg');
+      } else if (item.type.includes('ground')) {
+        typeElement.addClass('ground-bg');
+      } else if (item.type.includes('ground')) {
+        typeElement.addClass('ground-bg');
+      } else if (item.type.includes('fairy')) {
+        typeElement.addClass('fairy-bg');
+      } else if (item.type.includes('flying')) {
+        typeElement.addClass('flying-bg');
+      } else if (item.type.includes('normal')) {
+        typeElement.addClass('normal-bg');
+      } else if (item.type.includes('electric')) {
+        typeElement.addClass('electric-bg');
+      } else if (item.type.includes('bug')) {
+        typeElement.addClass('bug-bg');
+      } else {
+        typeElement.style.backgroundColor = '#fff';
+      }
+
       const xpElement = $(`<p> XP: ${item.baseXp} </p>`);
 
       modalHeader.append(modalTitle);
@@ -154,7 +226,6 @@ const pokemonRepository = (function() {
     });
   });
 
-
   return {
     add: add,
     getAll: getAll,
@@ -167,7 +238,9 @@ const pokemonRepository = (function() {
 
 pokemonRepository.loadList().then(function() {
   //data is loaded!
+
   pokemonRepository.getAll().forEach(function(pokemon) {
     pokemonRepository.addListItem(pokemon);
+    console.log(pokemon.detailsUrl);
   });
 });
