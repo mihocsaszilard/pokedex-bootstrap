@@ -1,8 +1,8 @@
 setTimeout(function() {
     loadingScreen = document.querySelector('#loading-screen');
     page = document.querySelector('#page');
-    loadingScreen.classList.add('hidden');
-    page.classList.remove('hidden');
+    // loadingScreen.classList.add('hidden');
+    // page.classList.remove('hidden');
 }, 3000);
 
 let itemPerPage = '24';
