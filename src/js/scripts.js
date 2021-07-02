@@ -34,12 +34,12 @@ const pokemonRepository = (function() {
   function addListItem(pokemon) {
     const pokemonUl = document.querySelector('.pokemon-list');
     const listItem = document.createElement('div');
-    listItem.classList.add('list-item','back', 'rounded', 'light-shadow', 'd-block', 'text-center', 'm-4', 'col-sm-3', 'col-xs-12');
+    listItem.classList.add('list-item','back', 'rounded', 'shadow', 'd-block', 'text-center', 'm-md-4', 'm-sm-2', 'col-sm-12','col-md-4','col-lg-3' ,'col-xs-12');
     // listItem.setAttribute('id', 'box');
     const pokemonImg = document.createElement('img');
     pokemonImg.classList.add('list-img', 'd-flex', 'pt-5', 'm-auto');
     const button = document.createElement('button');
-    button.classList.add('pokemon-button', 'btn', 'btn-outline-light', 'm-auto', 'd-flex');
+    button.classList.add('pokemon-button', 'btn', 'btn-outline-light', 'mx-auto', 'mt-4', 'd-flex');
     pokemonImg.src = 'img/pokeball.svg';
     button.innerText = pokemon.name;
 
@@ -126,17 +126,6 @@ const pokemonRepository = (function() {
     }
   }
 
-  // function bgColor(item) {
-  //   const pokemonUl = document.querySelector('.pokemon-list');
-  //   const listItem = pokemonUl.querySelector('div');
-  //   if(item.type.includes('grass')){
-  //     console.log(item.type);
-  //
-  //     listItem.classList.add('grass-bg')
-  //
-  //   }
-  // }
-
   function showDetails(item) {
     loadDetails(item).then(function() {
       showModal(item);
@@ -158,7 +147,7 @@ const pokemonRepository = (function() {
       modalBody.addClass('text-center');
       const modalTitle = $('.modal-title');
       const modalHeader = $('.modal-header');
-      modalHeader.addClass('d-block');
+      modalHeader.addClass('d-block text-warning');
       //clear all the existing content
       modalTitle.empty();
       modalBody.empty();
@@ -170,12 +159,12 @@ const pokemonRepository = (function() {
       //create element for height
       let heightElement;
       if (item.height < 10) {
-        heightElement = $(`<p> Height: ${item.height  * 10} cm </p>`);
+        heightElement = $(`<p class="text-warning mt-2"> Height: ${item.height  * 10} cm </p>`);
       } else {
-        heightElement = $(`<p> Height: ${item.height  / 10} m </p>`);
+        heightElement = $(`<p class="text-warning mt-2"> Height: ${item.height  / 10} m </p>`);
       }
       //create element for types
-      const typeElement = $(`<p> Type: ${item.type} </p>`);
+      const typeElement = $(`<p class="mx-auto w-50"> Type: ${item.type} </p>`);
 
       //highlighting the type field with the corresponding color
       if (item.type.includes('fire')) {
@@ -204,7 +193,7 @@ const pokemonRepository = (function() {
         typeElement.style.backgroundColor = '#fff';
       }
 
-      const xpElement = $(`<p> XP: ${item.baseXp} </p>`);
+      const xpElement = $(`<p class="text-warning"> XP: ${item.baseXp} </p>`);
 
       modalHeader.append(modalTitle);
       modalTitle.append(nameElement);
