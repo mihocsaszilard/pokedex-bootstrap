@@ -34,7 +34,7 @@ const pokemonRepository = (function() {
   function addListItem(pokemon) {
     const pokemonUl = document.querySelector('.pokemon-list');
     const listItem = document.createElement('div');
-    listItem.classList.add('list-item','back', 'rounded', 'shadow', 'd-block', 'text-center', 'm-md-4', 'm-sm-2', 'col-sm-12','col-md-4','col-lg-3' ,'col-xs-12');
+    listItem.classList.add('list-item','back', 'rounded', 'shadow', 'text-center', 'm-md-4', 'm-sm-2', 'col-sm-12','col-md-4','col-lg-3' ,'col-xs-12');
     // listItem.setAttribute('id', 'box');
     const pokemonImg = document.createElement('img');
     pokemonImg.classList.add('list-img', 'd-flex', 'pt-5', 'm-auto');
@@ -206,15 +206,37 @@ const pokemonRepository = (function() {
     });
   }
 
-  //Search  ---doesnt works
-  $(document).ready(function() {
-    $('#nameInput').on('keyup', function() {
-      var value = $(this).val().toLowerCase();
-      $('#pokemon-list div').filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-      });
-    });
-  });
+  //Search  -jQuery
+ $(document).ready(function() {
+   $('#nameInput').on('keyup', function() {
+     var value = $(this).val().toLowerCase();
+     $('#pokemon-list div').filter(function() {
+       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+     });
+   });
+ });
+
+//Search
+  // const filter = document.getElementById('nameInput');
+  // const itemList = document.getElementById('pokemon-list')
+  // filter.addEventListener('keyup', filterItems);
+  //
+  // function filterItems(e){
+  //   // convert text to lowercase
+  //   let text = e.target.value.toLowerCase();
+  //   // Get list
+  //   let items = itemList.getElementsByTagName('div');
+  //   // Convert to an array
+  //   for(let i=0; i<items.length; i++){
+  //     let itemName = items[i].innerText;
+  //     if(itemName.toLowerCase().indexOf(text) !== -1){
+  //       items[i].style.display = 'visible';
+  //       console.log (itemName);
+  //     } else {
+  //       items[i].style.display = 'none';
+  //     }
+  //   }
+  // }
 
   return {
     add: add,
@@ -231,6 +253,6 @@ pokemonRepository.loadList().then(function() {
 
   pokemonRepository.getAll().forEach(function(pokemon) {
     pokemonRepository.addListItem(pokemon);
-    console.log(pokemon.detailsUrl);
+    // console.log(pokemon.detailsUrl);
   });
 });
