@@ -19,7 +19,7 @@ const pokemonRepository = (function() {
 
   function showMore() {
     if(offset < totalItems){
-      apiUrl = 'https://pokeapi.co/api/v2/pokemon?offset=' + offset + '&limit=20';
+      apiUrl = 'https://pokeapi.co/api/v2/pokemon?offset=' + offset + '&limit=100';
       console.log(apiUrl);
       offset = offset + 20;
     } else {
