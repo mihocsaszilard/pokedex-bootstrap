@@ -2,6 +2,12 @@
 
 The application will display a list of data items,  load items from an external API, allowing the user to search for items and to get a detailed view of each individual item on the list.
 
+
+
+[pokedex-preview video](https://user-images.githubusercontent.com/62619507/137932016-d67fab99-4de6-47af-85e9-99002fa46f5b.mp4)
+
+
+
 ## Features and Requirements
 
 The app loads data from an external API (https://pokeapi.co/api/v2/pokemon), users should be able to view a list of data and see more details by clicking on a given item.
